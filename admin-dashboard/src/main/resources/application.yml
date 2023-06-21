@@ -1,3 +1,5 @@
-spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
+spring.datasource.url=jdbc:postgresql://localhost:5432/MissionUplinkUsers
+spring.datasource.username=postgres
+spring.datasource.password=9pBw4YxL
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
