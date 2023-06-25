@@ -20,6 +20,7 @@ public class EmailService implements EmailSender {
 
     private final JavaMailSender mailSender; 
 
+
     @Override
     @Async
     public void send(String to, String email) {
@@ -30,7 +31,7 @@ public class EmailService implements EmailSender {
             helper.setText(email, true);
             helper.setTo(to);
             helper.setSubject("Confirm your email");
-            helper.setFrom("admin@misssion-uplink.com");
+            helper.setFrom("williamsakinyeleoyedele@techforgoodinc.org");
             mailSender.send(mimeMessage);
         } catch (MessagingException e) {
             LOGGER.error("Failed to send email", e);

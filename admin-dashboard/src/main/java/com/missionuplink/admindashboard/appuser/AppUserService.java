@@ -6,7 +6,6 @@ import java.util.UUID;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.missionuplink.admindashboard.registration.token.ConfirmationToken;
@@ -23,7 +22,7 @@ public class AppUserService implements UserDetailsService{
 
 
     private final AppUserRepository appUserRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
     private final ConfirmationTokenService confirmationTokenService;
 
     @Override
@@ -44,11 +43,7 @@ public class AppUserService implements UserDetailsService{
             throw new IllegalStateException("email already exists");
         }   
         
-        String encodedPassword = bCryptPasswordEncoder
-                .encode(appUser.getPassword());
-
-        appUser.setPassword(encodedPassword);
-
+        
         appUserRepository.save(appUser);
 
         String token = UUID.randomUUID().toString();
@@ -62,8 +57,6 @@ public class AppUserService implements UserDetailsService{
 
         confirmationTokenService.saveConfirmationToken(
                 confirmationToken);
-
-        //TODO: SEND EMAIL 
 
 
         return token;

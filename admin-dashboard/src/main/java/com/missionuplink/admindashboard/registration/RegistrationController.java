@@ -11,11 +11,11 @@ import lombok.AllArgsConstructor;
 
 
 @RestController
-@RequestMapping(path = "api/v1/registration")
+@RequestMapping(path = "/register")
 @AllArgsConstructor
 public class RegistrationController {
 
-    private final RegistrationService registrationService; 
+    private RegistrationService registrationService; 
     
     @PostMapping
     public String register(@RequestBody RegistrationRequest request) {
@@ -24,6 +24,6 @@ public class RegistrationController {
 
     @GetMapping(path = "confirm")
     public String confirm(@RequestParam("token") String token) {
-        return registrationService.confirmToken(token);
+       return registrationService.confirmToken(token);
     }
 }

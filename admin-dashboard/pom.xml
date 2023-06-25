@@ -12,7 +12,7 @@
 	<artifactId>admin-dashboard</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>admin-dashboard</name>
-	<description>end points, security and dashboard for the admin</description>
+	<description>endpoints, security and dashboard for the admin</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -28,17 +28,16 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+		</dependency> 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<scope>runtime</scope>
-		</dependency>
+      		<groupId>com.h2database</groupId>
+      		<artifactId>h2</artifactId>
+      		<scope>runtime</scope>
+    	</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -50,9 +49,10 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
+    		<groupId>javax.servlet</groupId>
+    		<artifactId>javax.servlet-api</artifactId>
+    		<version>3.1.0</version>
+    		<scope>provided</scope>
 		</dependency>
     </dependencies>
 
