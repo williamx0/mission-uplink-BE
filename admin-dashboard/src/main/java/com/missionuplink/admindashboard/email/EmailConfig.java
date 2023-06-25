@@ -15,8 +15,8 @@ public class EmailConfig {
         // Set your mail server configuration properties
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
-        mailSender.setUsername("williamsakinyeleoyedele@techforgoodinc.org");
-        mailSender.setPassword("WILLIAM080t4g");
+        mailSender.setUsername("");
+        mailSender.setPassword("");
         
         return mailSender;
     }
