@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.missionuplink.admindashboard.appuser.AppUser;
 import com.missionuplink.admindashboard.appuser.AppUserRole;
 import com.missionuplink.admindashboard.appuser.AppUserService;
-import com.missionuplink.admindashboard.email.EmailSender;
+//import com.missionuplink.admindashboard.email.EmailSender;
 import com.missionuplink.admindashboard.registration.token.ConfirmationToken;
 import com.missionuplink.admindashboard.registration.token.ConfirmationTokenService;
 
@@ -21,7 +21,7 @@ public class RegistrationService {
     private final AppUserService appUserService;
     private final EmailValidator emailValidator;
     private final ConfirmationTokenService confirmationTokenService;
-    private final EmailSender emailSender;
+//    private final EmailSender emailSender;
 
     public String register(RegistrationRequest request) {
         boolean isValidEmail = emailValidator.
@@ -41,9 +41,9 @@ public class RegistrationService {
         );
         
         String link = "http://localhost:8080/register/confirm?token=" + token;
-        emailSender.send(
-                request.getEmail(),
-                buildEmail(request.getFirstName(), link));
+//        emailSender.send(
+//                request.getEmail(),
+//                buildEmail(request.getFirstName(), link));
 
         return token;
  

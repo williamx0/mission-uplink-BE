@@ -15,26 +15,31 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class AppUserService implements UserDetailsService{
-
-    private final static String USER_NOT_FOUND_MSG = 
-            "User with email %s not found";
-
-
-    private final AppUserRepository appUserRepository;
-
-    private final ConfirmationTokenService confirmationTokenService;
-
-    @Override
-    public UserDetails loadUserByUsername(String email) 
-            throws UsernameNotFoundException {
-        
-        return appUserRepository.findByEmail(email)
-                .orElseThrow(() -> 
-                         new UsernameNotFoundException(
-                                String.format(USER_NOT_FOUND_MSG, email)));
+public class AppUserService {
+	
+	private final AppUserRepository appUserRepository;
+	
+	public String resigterUser(AppUser user) {
+        // More Business Logic
+		appUserRepository.save(user);
+        return "Success";
     }
-    
+
+//    private final static String USER_NOT_FOUND_MSG = 
+//            "User with email %s not found";
+//
+    private final ConfirmationTokenService confirmationTokenService;
+//
+//    @Override
+//    public UserDetails loadUserByUsername(String email) 
+//            throws UsernameNotFoundException {
+//        
+//        return appUserRepository.findByEmail(email)
+//                .orElseThrow(() -> 
+//                         new UsernameNotFoundException(
+//                                String.format(USER_NOT_FOUND_MSG, email)));
+//    }
+//    
     public String signUpUser(AppUser appUser) {
         boolean userExists = appUserRepository
                 .findByEmail(appUser.getEmail())
