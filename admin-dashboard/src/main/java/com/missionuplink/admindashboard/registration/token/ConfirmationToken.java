@@ -30,8 +30,9 @@ public class ConfirmationToken {
     @Id
     @GeneratedValue(
         strategy = GenerationType.SEQUENCE,
-        generator = "student_sequence"
+        generator = "confirmation_token_sequence"
     )
+    
     private Long id;
 
     @Column(nullable = false)
@@ -52,15 +53,14 @@ public class ConfirmationToken {
     )
     private AppUser appUser;
 
-
     public ConfirmationToken(String token, 
                             LocalDateTime createdAt, 
-                            LocalDateTime expiredAt,
+                            LocalDateTime expiresAt,
                             AppUser appUser) 
                             {
         this.token = token;
         this.createdAt = createdAt;
-        this.expiresAt = expiredAt;
+        this.expiresAt = expiresAt;
         this.appUser = appUser;
     } 
 }
