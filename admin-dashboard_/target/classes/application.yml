@@ -1,0 +1,6 @@
+
+
+# configure JWT Authentication
+app:
+  jwt-secret: c745847391611f54a9066b36ff028db06a6b1ff390d8ca6dc3b698dd958d26d7
+  jwt-expiration-milliseconds: 604800000
