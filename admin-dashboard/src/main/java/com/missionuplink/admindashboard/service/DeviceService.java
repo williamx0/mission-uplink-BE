@@ -15,5 +15,9 @@ public interface DeviceService {
     Device getDeviceById(Long deviceId);
     List<Device> getAllDevices();
 
+    String disableDevice(Long deviceId);
+    String enableDevice(Long deviceId);
+
+    String addUser(Long deviceId, AppUser newUser);
 }
 

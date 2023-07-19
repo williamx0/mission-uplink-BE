@@ -1,6 +1,9 @@
 package com.missionuplink.admindashboard.controller;
 
+import com.missionuplink.admindashboard.exception.ResourceNotFoundException;
+import com.missionuplink.admindashboard.model.entity.AppUser;
 import com.missionuplink.admindashboard.model.entity.Device;
+import com.missionuplink.admindashboard.repository.AppUserRepository;
 import com.missionuplink.admindashboard.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,10 +18,13 @@ import java.util.List;
 public class DeviceController {
 
     private final DeviceService deviceService;
+    private final AppUserRepository appUserRepository;
 
     @Autowired
-    public DeviceController(DeviceService deviceService) {
+    public DeviceController(DeviceService deviceService,
+                            AppUserRepository appUserRepository) {
         this.deviceService = deviceService;
+        this.appUserRepository = appUserRepository;
     }
 
     @PostMapping("/device")
@@ -61,6 +67,31 @@ public class DeviceController {
     public ResponseEntity<List<Device>> getAllDevices() {
         List<Device> devices = deviceService.getAllDevices();
         return new ResponseEntity<>(devices, HttpStatus.OK);
+    }
+
+    @PutMapping("/{deviceId}/disable")
+    public ResponseEntity<String> disableDevice(@PathVariable(value = "deviceId") Long deviceId){
+        String result = deviceService.disableDevice(deviceId);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @PutMapping("/{deviceId}/enable")
+    public ResponseEntity<String> enableDevice(@PathVariable(value = "deviceId") Long deviceId){
+        String result = deviceService.enableDevice(deviceId);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    // add user with userId to the device with deviceId
+    @PutMapping("/{deviceId}/adduser/{userId}")
+    public ResponseEntity<String> addUser(
+            @PathVariable(value = "deviceId") Long deviceId,
+            @PathVariable(value = "userId")Long userId){
+        AppUser newUser = appUserRepository.findById(userId).orElseThrow(
+                () -> new ResourceNotFoundException("AppUser", "id", userId)
+        );
+
+        String result = deviceService.addUser(deviceId, newUser);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
 

@@ -56,8 +56,9 @@ public class SecurityConfig {
                 //change it based on your need
                 .authorizeHttpRequests(authorize ->
                         //authorize.anyRequest().authenticated()
-                        authorize.requestMatchers(HttpMethod.GET, "/api/test/reflect").permitAll().
-                        requestMatchers( "/api/auth/**").permitAll()
+                        authorize.requestMatchers(HttpMethod.GET, "/api/test/reflect").permitAll()
+                                .requestMatchers("/api/device_registration/**").permitAll()
+                                .requestMatchers( "/api/auth/**").permitAll()
                                 .anyRequest().authenticated()
 
                 ).exceptionHandling(exception -> exception

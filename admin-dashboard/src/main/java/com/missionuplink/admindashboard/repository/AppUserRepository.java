@@ -13,6 +13,8 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long> {
 
     Optional<AppUser> findByEmail(String email);
 
+    Optional<AppUser> findById(String id);
+
     Boolean existsByEmail(String email);
 
     @Transactional

@@ -27,6 +27,7 @@ public class GlobalExceptionHandler {
     }
 
     //global exceptions
+    //handle ResourceNotFoundException and AdminException
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDetails> handleGlobalException(Exception exception, WebRequest webRequest) {
 

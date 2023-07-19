@@ -42,6 +42,8 @@ public class Device {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDate registrationDate;
 
+    private Boolean enabled;
+
     @JsonIgnore
     @ManyToMany
     @JoinTable(
