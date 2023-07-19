@@ -3,6 +3,7 @@ package com.missionuplink.admindashboard.controller;
 import com.missionuplink.admindashboard.exception.ResourceNotFoundException;
 import com.missionuplink.admindashboard.model.entity.AppUser;
 import com.missionuplink.admindashboard.model.entity.Device;
+import com.missionuplink.admindashboard.payload.DeviceDto;
 import com.missionuplink.admindashboard.repository.AppUserRepository;
 import com.missionuplink.admindashboard.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,14 +35,11 @@ public class DeviceController {
     }
 
     @PutMapping("/{deviceId}")
-    public ResponseEntity<Device> updateDevice(@PathVariable Long deviceId, @RequestBody Device device) {
-        Device existingDevice = deviceService.getDeviceById(deviceId);
-        if (existingDevice == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        device.setId(deviceId);
-        Device updatedDevice = deviceService.updateDevice(device);
-        return new ResponseEntity<>(updatedDevice, HttpStatus.OK);
+    public ResponseEntity<DeviceDto> updateDevice(@PathVariable(value = "deviceId") Long deviceId, @RequestBody DeviceDto deviceDto) {
+
+        DeviceDto updatedDeviceDto = deviceService.updateDevice(deviceId, deviceDto);
+
+        return new ResponseEntity<>(updatedDeviceDto, HttpStatus.OK);
     }
 
     @DeleteMapping("/{deviceId}")

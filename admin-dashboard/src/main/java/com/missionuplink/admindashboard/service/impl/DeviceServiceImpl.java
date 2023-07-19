@@ -4,6 +4,7 @@ import com.missionuplink.admindashboard.exception.AdminException;
 import com.missionuplink.admindashboard.exception.ResourceNotFoundException;
 import com.missionuplink.admindashboard.model.entity.AppUser;
 import com.missionuplink.admindashboard.model.entity.Device;
+import com.missionuplink.admindashboard.payload.DeviceDto;
 import com.missionuplink.admindashboard.repository.DeviceRepository;
 import com.missionuplink.admindashboard.service.DeviceService;
 import lombok.AllArgsConstructor;
@@ -32,9 +33,32 @@ public class DeviceServiceImpl implements DeviceService {
         }
 
         @Override
-        public Device updateDevice(Device device) {
+        public DeviceDto updateDevice(Long deviceId, DeviceDto deviceDto) {
             // Additional validation or business logic can be performed here if needed
-            return deviceRepository.save(device);
+            Device device = deviceRepository.findById(deviceId).orElseThrow(
+                    () -> new ResourceNotFoundException("Device", "id", deviceId)
+            );
+
+            //update info
+            device.setMacAddress(deviceDto.getMacAddress());
+            device.setDeviceName(deviceDto.getDeviceName());
+            device.setHardwareId(deviceDto.getHardwareId());
+            device.setDeviceType(deviceDto.getDeviceType());
+            device.setSystemModel(deviceDto.getSystemModel());
+            device.setUid(deviceDto.getUid());
+
+            Device updatedDevice = deviceRepository.save(device);
+
+            // return the updated deviceDTO
+            DeviceDto updatedDeviceDto = new DeviceDto();
+            updatedDeviceDto.setMacAddress(updatedDevice.getMacAddress());
+            updatedDeviceDto.setDeviceName(updatedDevice.getDeviceName());
+            updatedDeviceDto.setHardwareId(updatedDevice.getHardwareId());
+            updatedDeviceDto.setDeviceType(updatedDevice.getDeviceType());
+            updatedDeviceDto.setSystemModel(updatedDevice.getSystemModel());
+            updatedDeviceDto.setUid(updatedDevice.getUid());
+
+            return updatedDeviceDto;
         }
 
         @Override

@@ -36,7 +36,7 @@ public class Device {
     private String systemModel;
 
     @Column(nullable = false)
-    private String uID;
+    private String uid;
 
     @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
