@@ -1,5 +1,7 @@
 package com.missionuplink.admindashboard.payload;
 
+import java.util.List;
+
 import com.missionuplink.admindashboard.model.enums.AppUserRole;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,4 +18,8 @@ public class RegisterDto {
     private String email;
     private String password;
     private AppUserRole appUserRole;
+    // private double averageBandwidth;
+    // private double averageTimeOnline;
+    // private List<String> lastFourUrls;
+    // private List<String> topFourUrls;
 }

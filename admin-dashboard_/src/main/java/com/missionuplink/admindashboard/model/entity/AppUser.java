@@ -6,6 +6,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.boot.autoconfigure.web.WebProperties.Resources.Chain.Strategy;
+
+// import org.hibernate.mapping.List;
 
 @Setter
 @Getter
@@ -41,6 +47,18 @@ public class AppUser {
     private Boolean locked;
 
     private Boolean enabled;
+
+    private LocalDate creationDate;
+
+//     @Column(nullable = false)
+    private Long averageBandwidth;
+    
+//     @Column(nullable = false)
+    private Long averageTimeOnline;
+
+    private List<String> lastFourUrls;
+
+    private List<String> topFourUrls;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
