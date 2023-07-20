@@ -60,8 +60,6 @@ public class SecurityConfig {
                                 .requestMatchers("/api/device_registration/**").permitAll()
                                 .requestMatchers( "/api/auth/**").permitAll()
                                 .requestMatchers( "/api/user/**").permitAll()
-                        authorize.requestMatchers(HttpMethod.GET, "/api/test/**").permitAll().
-                        requestMatchers( "/api/auth/**").permitAll()
                                 .anyRequest().authenticated()
 
                 ).exceptionHandling(exception -> exception
