@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -65,6 +65,20 @@ public class DeviceController {
     public ResponseEntity<List<Device>> getAllDevices() {
         List<Device> devices = deviceService.getAllDevices();
         return new ResponseEntity<>(devices, HttpStatus.OK);
+    }
+        
+    @GetMapping("/newDevice")
+    public ResponseEntity<List<Device>> getNewDevice() {
+    	
+    	LocalDate currentDate = LocalDate.now();
+
+        // Get the date 5 days earlier
+        LocalDate fiveDaysEarlier = currentDate.minusDays(5);
+        List<Device> device = deviceService.getNewDevicesBetweenDays(fiveDaysEarlier, currentDate);
+        if (device == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(device, HttpStatus.OK);
     }
 
     @PutMapping("/{deviceId}/disable")

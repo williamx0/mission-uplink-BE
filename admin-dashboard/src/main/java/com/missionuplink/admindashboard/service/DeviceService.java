@@ -6,7 +6,7 @@ import com.missionuplink.admindashboard.payload.DeviceDto;
 
 import java.util.List;
 import java.util.Set;
-
+import java.time.LocalDate;
 import java.util.List;
 
 public interface DeviceService {
@@ -18,7 +18,7 @@ public interface DeviceService {
 
     String disableDevice(Long deviceId);
     String enableDevice(Long deviceId);
-
+    List<Device> getNewDevicesBetweenDays(LocalDate desiredDate, LocalDate currentDate);
     String addUser(Long deviceId, AppUser newUser);
 }
 

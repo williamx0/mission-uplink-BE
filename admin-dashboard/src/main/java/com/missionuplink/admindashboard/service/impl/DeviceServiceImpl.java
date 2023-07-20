@@ -11,7 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -112,5 +112,11 @@ public class DeviceServiceImpl implements DeviceService {
             device.getAppUser().add(newUser);
             deviceRepository.save(device);
             return "User with id " + newUser.getId() + "is successfully  with device " + deviceId + "!";
+        }
+
+        @Override
+        public List<Device> getNewDevicesBetweenDays(LocalDate desiredDate, LocalDate currentDate) {
+
+            return deviceRepository.findAllByRegistrationDateBetween(desiredDate,currentDate);
         }
 }
