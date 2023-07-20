@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dcb344f2-7a70-414a-9b17-35cc6f455fea" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/controller/EmailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/model/entity/PasswordResetToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/payload/EmailDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/payload/PasswordResetDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/repository/PasswordResetTokenRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/service/EmailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/service/PasswordResetTokenService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/service/impl/EmailServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/service/impl/PasswordResetTokenServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-dashboard/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/service/impl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/service/impl/AuthServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-dashboard/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/AuthService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/impl/AuthServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/impl/AuthServiceImpl.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2SlcmKxRN97HqcEF0uBkecU2WHq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.15287356"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="main" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-20 (2)" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.missionuplink.admindashboard.AdminDashboardApplication" />
+      <module name="admin-dashboard" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dcb344f2-7a70-414a-9b17-35cc6f455fea" name="Changes" comment="" />
+      <created>1689724766165</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1689724766165</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

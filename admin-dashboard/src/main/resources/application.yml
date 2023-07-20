@@ -2,13 +2,25 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres?useSSL=false
     username: postgres
-    password: qwer1234
+    password: 2002-02-01
 
   jpa:
     hibernate:
       ddl-auto: update
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: yz2568@cornell.edu
+    password: usnndzxhowxacxrx
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 # configure JWT Authentication
 app:

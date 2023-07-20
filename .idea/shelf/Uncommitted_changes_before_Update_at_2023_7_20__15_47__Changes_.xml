@@ -1,0 +1,24 @@
+<changelist name="Uncommitted_changes_before_Update_at_2023_7_20,_15_47_[Changes]" date="1689882590658" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_7_20,_15_47_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2023/7/20, 15:47 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="admin-dashboard/target/classes/com/missionuplink/admindashboard/service/impl/AuthServiceImpl.class" />
+    <option name="AFTER_PATH" value="admin-dashboard/target/classes/com/missionuplink/admindashboard/service/impl/AuthServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_7_20,_15_47_[Changes]/AuthServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="admin-dashboard/target/classes/com/missionuplink/admindashboard/config/SecurityConfig.class" />
+    <option name="AFTER_PATH" value="admin-dashboard/target/classes/com/missionuplink/admindashboard/config/SecurityConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_7_20,_15_47_[Changes]/SecurityConfig.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="admin-dashboard/target/classes/com/missionuplink/admindashboard/controller/AuthController.class" />
+    <option name="AFTER_PATH" value="admin-dashboard/target/classes/com/missionuplink/admindashboard/controller/AuthController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_7_20,_15_47_[Changes]/AuthController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="admin-dashboard/target/classes/com/missionuplink/admindashboard/service/AuthService.class" />
+    <option name="AFTER_PATH" value="admin-dashboard/target/classes/com/missionuplink/admindashboard/service/AuthService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_7_20,_15_47_[Changes]/AuthService.class" />
+  </binary>
+</changelist>

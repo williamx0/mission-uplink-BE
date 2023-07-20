@@ -8,6 +8,9 @@ import com.missionuplink.admindashboard.payload.UpdateUserInfoDto;
 import com.missionuplink.admindashboard.repository.AppUserRepository;
 import com.missionuplink.admindashboard.security.JwtTokenProvider;
 import com.missionuplink.admindashboard.service.AuthService;
+import com.missionuplink.admindashboard.service.PasswordResetTokenService;
+import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,23 +26,27 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
     private AuthenticationManager authenticationManager;
     private AppUserRepository appUserRepository;
     private PasswordEncoder passwordEncoder;
     private JwtTokenProvider jwtTokenProvider;
+    private final PasswordResetTokenService passwordResetTokenService;
 
 
     @Autowired
     public AuthServiceImpl(AuthenticationManager authenticationManager,
                            AppUserRepository appUserRepository,
                            PasswordEncoder passwordEncoder,
-                           JwtTokenProvider jwtTokenProvider) {
+                           JwtTokenProvider jwtTokenProvider,
+            PasswordResetTokenService passwordResetTokenService) {
         this.authenticationManager = authenticationManager;
         this.appUserRepository = appUserRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtTokenProvider = jwtTokenProvider;
+        this.passwordResetTokenService = passwordResetTokenService;
     }
 
     @Override
@@ -115,4 +122,31 @@ public class AuthServiceImpl implements AuthService {
             return "User not found with that id";
         }
     }
+
+    @Override
+    public Optional<AppUser> findUserByEmail(String email) {
+        return appUserRepository.findByEmail(email);
+    }
+
+    @Override
+    public void createPasswordResetTokenForUser(String token, AppUser appUser) {
+        passwordResetTokenService.createPasswordResetTokenForUser(token, appUser);
+    }
+
+    @Override
+    public String validatePasswordResetToken(String token) {
+        return passwordResetTokenService.validatePasswordResetToken(token);
+    }
+
+    @Override
+    public AppUser findUserByPasswordResetToken(String token) {
+        return passwordResetTokenService.findAppUserByPasswordResetToken(token).get() ;
+    }
+
+    @Override
+    public void resetUserPassword(AppUser appUser, String newPassword) {
+        appUser.setPassword(passwordEncoder.encode(newPassword));
+        appUserRepository.save(appUser);
+    }
+
 }
