@@ -62,10 +62,11 @@ public class AuthController {
     // url: "/api/auth/login" or "/api/auth/signin"
     @PostMapping(value = {"/login", "/signin"})
     public ResponseEntity<JWTAuthResponse> login(@RequestBody LoginDto loginDto){
-        String token = authService.login(loginDto);
+        String[] tokenAndRole = authService.login(loginDto);
 
         JWTAuthResponse jwtAuthResponse = new JWTAuthResponse();
-        jwtAuthResponse.setAccessToken(token);
+        jwtAuthResponse.setAccessToken(tokenAndRole[0]);
+        jwtAuthResponse.setAppUserRole(tokenAndRole[1]);
 
         return ResponseEntity.ok(jwtAuthResponse);
     }

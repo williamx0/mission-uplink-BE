@@ -28,12 +28,14 @@ public class DeviceController {
         this.appUserRepository = appUserRepository;
     }
 
+    //add new device
     @PostMapping("/device")
     public ResponseEntity<Device> registerDevice(@RequestBody Device device) {
         Device registeredDevice = deviceService.registerDevice(device);
         return new ResponseEntity<>(registeredDevice, HttpStatus.CREATED);
     }
 
+    //update info for device with deviceid
     @PutMapping("/{deviceId}")
     public ResponseEntity<DeviceDto> updateDevice(@PathVariable(value = "deviceId") Long deviceId, @RequestBody DeviceDto deviceDto) {
 
@@ -42,6 +44,7 @@ public class DeviceController {
         return new ResponseEntity<>(updatedDeviceDto, HttpStatus.OK);
     }
 
+    //delete a device
     @DeleteMapping("/{deviceId}")
     public ResponseEntity<Void> deleteDevice(@PathVariable Long deviceId) {
         Device existingDevice = deviceService.getDeviceById(deviceId);

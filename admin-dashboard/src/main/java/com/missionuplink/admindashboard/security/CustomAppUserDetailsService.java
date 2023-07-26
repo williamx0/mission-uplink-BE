@@ -33,9 +33,9 @@ public class CustomAppUserDetailsService implements UserDetailsService {
 
         Set<GrantedAuthority> authorities = new HashSet<>();
         switch (appUser.getAppUserRole()){
-            case USER :
+            case TEACHER :
                 // only some specific role's name can be used to new SimpleGrantedAuthority object
-                authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+                authorities.add(new SimpleGrantedAuthority("ROLE_TEACHER"));
                 break;
             case ADMIN :
                 authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));

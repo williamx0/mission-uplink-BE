@@ -11,7 +11,7 @@ import java.util.Optional;
 import com.missionuplink.admindashboard.payload.UpdateUserInfoDto;
 
 public interface AuthService {
-    String login(LoginDto loginDto);
+    String[] login(LoginDto loginDto);
 
     String register(RegisterDto registerDto);
 
