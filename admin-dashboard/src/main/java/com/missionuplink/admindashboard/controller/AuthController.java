@@ -1,6 +1,7 @@
 package com.missionuplink.admindashboard.controller;
 
 import com.missionuplink.admindashboard.model.entity.AppUser;
+import com.missionuplink.admindashboard.payload.DeviceLoginDto;
 import com.missionuplink.admindashboard.payload.EmailDto;
 import com.missionuplink.admindashboard.payload.JWTAuthResponse;
 import com.missionuplink.admindashboard.payload.LoginDto;
@@ -67,6 +68,16 @@ public class AuthController {
         JWTAuthResponse jwtAuthResponse = new JWTAuthResponse();
         jwtAuthResponse.setAccessToken(tokenAndRole[0]);
         jwtAuthResponse.setAppUserRole(tokenAndRole[1]);
+
+        return ResponseEntity.ok(jwtAuthResponse);
+    }
+    
+    @PostMapping(value = {"/deviceLogin", "/deviceSignin"})
+    public ResponseEntity<JWTAuthResponse> deviceLogin(@RequestBody DeviceLoginDto loginDto){
+        String tokenAndRole = authService.deviceLogin(loginDto);
+
+        JWTAuthResponse jwtAuthResponse = new JWTAuthResponse();
+        jwtAuthResponse.setAccessToken(tokenAndRole);
 
         return ResponseEntity.ok(jwtAuthResponse);
     }

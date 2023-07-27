@@ -3,6 +3,7 @@ package com.missionuplink.admindashboard.service.impl;
 import com.missionuplink.admindashboard.exception.AuthApiException;
 import com.missionuplink.admindashboard.model.entity.AppUser;
 import com.missionuplink.admindashboard.model.enums.AppUserRole;
+import com.missionuplink.admindashboard.payload.DeviceLoginDto;
 import com.missionuplink.admindashboard.payload.LoginDto;
 import com.missionuplink.admindashboard.payload.RegisterDto;
 import com.missionuplink.admindashboard.payload.UpdateUserInfoDto;
@@ -63,6 +64,12 @@ public class AuthServiceImpl implements AuthService {
         AppUserRole appUserRole = appUserRepository.findByEmail(loginDto.getEmail()).get().getAppUserRole();
         //return "User Logged-in successful!";
         return new String[]{token, appUserRole.toString()};
+    }
+    
+    //implement this, should be similar to login function but we dont need to return the appUserRole. Just the JWT token
+    @Override
+    public String deviceLogin(DeviceLoginDto loginDto) {
+    	return null;
     }
 
     // @Override
