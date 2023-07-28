@@ -7,6 +7,8 @@ import com.missionuplink.admindashboard.model.entity.Device;
 import com.missionuplink.admindashboard.payload.DeviceDto;
 import com.missionuplink.admindashboard.repository.DeviceRepository;
 import com.missionuplink.admindashboard.service.DeviceService;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,15 +23,34 @@ import java.util.Optional;
 public class DeviceServiceImpl implements DeviceService {
 
         private final DeviceRepository deviceRepository;
+        private final DateTimeFormatter localDateFormatter;
 
         @Autowired
         public DeviceServiceImpl(DeviceRepository deviceRepository) {
             this.deviceRepository = deviceRepository;
+            this.localDateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
         }
 
         @Override
-        public Device registerDevice(Device device) {
-            return deviceRepository.save(device);
+//        public Device registerDevice(Device device) {
+//            return deviceRepository.save(device);
+//        }
+        public String registerDevice(DeviceDto deviceDto) {
+            if (deviceRepository.existsByMacAddress(deviceDto.getMacAddress())) return "Device already exists.";
+            Device device = new Device();
+            device.setMacAddress(deviceDto.getMacAddress());
+            device.setDeviceName(deviceDto.getDeviceName());
+            device.setHardwareId(deviceDto.getHardwareId());
+            device.setDeviceType(deviceDto.getDeviceType());
+            device.setSystemModel(deviceDto.getSystemModel());
+            device.setUid(deviceDto.getUid());
+            device.setEnabled(true);
+            LocalDateTime currentTime = LocalDateTime.now();
+            String currentTimeString = currentTime.format(localDateFormatter);
+            currentTime = LocalDateTime.parse(currentTimeString, localDateFormatter);
+            device.setRegistrationDate(currentTime);
+            deviceRepository.save(device);
+            return "Device registered successfully.";
         }
 
         @Override
@@ -106,12 +127,12 @@ public class DeviceServiceImpl implements DeviceService {
             );
 
             if(device.getAppUser().contains(newUser)){
-                throw new AdminException(HttpStatus.BAD_REQUEST, "User with id " + newUser.getId() + "is already registered with device " + deviceId + "!");
+                throw new AdminException(HttpStatus.BAD_REQUEST, "User with id " + newUser.getId() + " is already registered with device " + deviceId + "!");
             }
 
             device.getAppUser().add(newUser);
             deviceRepository.save(device);
-            return "User with id " + newUser.getId() + "is successfully  with device " + deviceId + "!";
+            return "User with id " + newUser.getId() + " is successfully  with device " + deviceId + "!";
         }
 
         @Override

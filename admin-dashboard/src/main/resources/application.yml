@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres?useSSL=false
     username: postgres
-    password: qwer1234
+    password: 2002-02-01
 
   jpa:
     hibernate:

@@ -1,17 +1,21 @@
 package com.missionuplink.admindashboard.service.impl;
 
 import com.missionuplink.admindashboard.exception.AuthApiException;
+import com.missionuplink.admindashboard.exception.MacAddressNotFoundException;
 import com.missionuplink.admindashboard.model.entity.AppUser;
+import com.missionuplink.admindashboard.model.entity.Device;
 import com.missionuplink.admindashboard.model.enums.AppUserRole;
 import com.missionuplink.admindashboard.payload.DeviceLoginDto;
 import com.missionuplink.admindashboard.payload.LoginDto;
 import com.missionuplink.admindashboard.payload.RegisterDto;
 import com.missionuplink.admindashboard.payload.UpdateUserInfoDto;
 import com.missionuplink.admindashboard.repository.AppUserRepository;
+import com.missionuplink.admindashboard.repository.DeviceRepository;
 import com.missionuplink.admindashboard.security.JwtTokenProvider;
 import com.missionuplink.admindashboard.service.AuthService;
 import com.missionuplink.admindashboard.service.PasswordResetTokenService;
 import java.util.Optional;
+import java.util.Set;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -26,6 +30,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import scala.App;
 
 @Service
 @RequiredArgsConstructor
@@ -33,6 +38,7 @@ public class AuthServiceImpl implements AuthService {
 
     private AuthenticationManager authenticationManager;
     private AppUserRepository appUserRepository;
+    private DeviceRepository deviceRepository;
     private PasswordEncoder passwordEncoder;
     private JwtTokenProvider jwtTokenProvider;
     private final PasswordResetTokenService passwordResetTokenService;
@@ -41,11 +47,13 @@ public class AuthServiceImpl implements AuthService {
     @Autowired
     public AuthServiceImpl(AuthenticationManager authenticationManager,
                            AppUserRepository appUserRepository,
+                            DeviceRepository deviceRepository,
                            PasswordEncoder passwordEncoder,
                            JwtTokenProvider jwtTokenProvider,
             PasswordResetTokenService passwordResetTokenService) {
         this.authenticationManager = authenticationManager;
         this.appUserRepository = appUserRepository;
+        this.deviceRepository = deviceRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtTokenProvider = jwtTokenProvider;
         this.passwordResetTokenService = passwordResetTokenService;
@@ -69,7 +77,16 @@ public class AuthServiceImpl implements AuthService {
     //implement this, should be similar to login function but we dont need to return the appUserRole. Just the JWT token
     @Override
     public String deviceLogin(DeviceLoginDto loginDto) {
-    	return null;
+        if (!isValidMacAddress(loginDto)) throw new MacAddressNotFoundException(HttpStatus.BAD_REQUEST, "Invalid Mac Address.");
+
+    	Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                loginDto.getUsername(), loginDto.getPassword()
+        ));
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String token = jwtTokenProvider.generateToken(authentication);
+
+        return token;
     }
 
     // @Override
@@ -156,6 +173,17 @@ public class AuthServiceImpl implements AuthService {
     public void resetUserPassword(AppUser appUser, String newPassword) {
         appUser.setPassword(passwordEncoder.encode(newPassword));
         appUserRepository.save(appUser);
+    }
+
+    private boolean isValidMacAddress(DeviceLoginDto deviceLoginDto) {
+        Device device = deviceRepository.findByMacAddress(deviceLoginDto.getMacAddress());
+        if (device == null) return false;
+
+        Set<AppUser> appUsers = device.getAppUser();
+        for (AppUser appUser: appUsers) {
+            if (appUser.getEmail().equals(deviceLoginDto.getUsername())) return true;
+        }
+        return false;
     }
 
 }

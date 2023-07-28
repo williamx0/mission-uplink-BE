@@ -30,9 +30,9 @@ public class DeviceController {
 
     //add new device
     @PostMapping("/device")
-    public ResponseEntity<Device> registerDevice(@RequestBody Device device) {
-        Device registeredDevice = deviceService.registerDevice(device);
-        return new ResponseEntity<>(registeredDevice, HttpStatus.CREATED);
+    public ResponseEntity<String> registerDevice(@RequestBody DeviceDto deviceDto) {
+        String response = deviceService.registerDevice(deviceDto);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     //update info for device with deviceid

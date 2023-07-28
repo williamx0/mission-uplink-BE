@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface DeviceService {
-    Device registerDevice(Device device);
+    String registerDevice(DeviceDto deviceDto);
     DeviceDto updateDevice(Long deviceId, DeviceDto deviceDto);
     void deleteDevice(Long deviceId);
     Device getDeviceById(Long deviceId);
