@@ -8,6 +8,8 @@ import com.missionuplink.admindashboard.model.entity.AppUser;
 import com.missionuplink.admindashboard.payload.DeviceLoginDto;
 import com.missionuplink.admindashboard.payload.LoginDto;
 import com.missionuplink.admindashboard.payload.RegisterDto;
+import com.missionuplink.admindashboard.model.entity.Device;
+
 import java.util.Optional;
 import com.missionuplink.admindashboard.payload.UpdateUserInfoDto;
 
@@ -17,6 +19,8 @@ public interface AuthService {
     String deviceLogin(DeviceLoginDto loginDto);
 
     String register(RegisterDto registerDto);
+
+    Device registerDevice(Device device);
 
     List<AppUser> getAllWithDate(LocalDate fiveDaysAgo);
 

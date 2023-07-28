@@ -2,12 +2,14 @@ package com.missionuplink.admindashboard.service.impl;
 
 import com.missionuplink.admindashboard.exception.AuthApiException;
 import com.missionuplink.admindashboard.model.entity.AppUser;
+import com.missionuplink.admindashboard.model.entity.Device;
 import com.missionuplink.admindashboard.model.enums.AppUserRole;
 import com.missionuplink.admindashboard.payload.DeviceLoginDto;
 import com.missionuplink.admindashboard.payload.LoginDto;
 import com.missionuplink.admindashboard.payload.RegisterDto;
 import com.missionuplink.admindashboard.payload.UpdateUserInfoDto;
 import com.missionuplink.admindashboard.repository.AppUserRepository;
+import com.missionuplink.admindashboard.repository.DeviceRepository;
 import com.missionuplink.admindashboard.security.JwtTokenProvider;
 import com.missionuplink.admindashboard.service.AuthService;
 import com.missionuplink.admindashboard.service.PasswordResetTokenService;
@@ -36,40 +38,41 @@ public class AuthServiceImpl implements AuthService {
     private PasswordEncoder passwordEncoder;
     private JwtTokenProvider jwtTokenProvider;
     private final PasswordResetTokenService passwordResetTokenService;
-
+    private final DeviceRepository deviceRepository;
 
     @Autowired
     public AuthServiceImpl(AuthenticationManager authenticationManager,
-                           AppUserRepository appUserRepository,
-                           PasswordEncoder passwordEncoder,
-                           JwtTokenProvider jwtTokenProvider,
-            PasswordResetTokenService passwordResetTokenService) {
+            AppUserRepository appUserRepository,
+            PasswordEncoder passwordEncoder,
+            JwtTokenProvider jwtTokenProvider,
+            PasswordResetTokenService passwordResetTokenService, DeviceRepository deviceRepository) {
         this.authenticationManager = authenticationManager;
         this.appUserRepository = appUserRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtTokenProvider = jwtTokenProvider;
         this.passwordResetTokenService = passwordResetTokenService;
+        this.deviceRepository = deviceRepository;
     }
 
     @Override
     public String[] login(LoginDto loginDto) {
 
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                loginDto.getEmail(), loginDto.getPassword()
-        ));
+                loginDto.getEmail(), loginDto.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String token = jwtTokenProvider.generateToken(authentication);
         AppUserRole appUserRole = appUserRepository.findByEmail(loginDto.getEmail()).get().getAppUserRole();
-        //return "User Logged-in successful!";
-        return new String[]{token, appUserRole.toString()};
+        // return "User Logged-in successful!";
+        return new String[] { token, appUserRole.toString() };
     }
-    
-    //implement this, should be similar to login function but we dont need to return the appUserRole. Just the JWT token
+
+    // implement this, should be similar to login function but we dont need to
+    // return the appUserRole. Just the JWT token
     @Override
     public String deviceLogin(DeviceLoginDto loginDto) {
-    	return null;
+        return null;
     }
 
     // @Override
@@ -81,7 +84,7 @@ public class AuthServiceImpl implements AuthService {
     public String register(RegisterDto registerDto) {
 
         // check for email exists in database
-        if(appUserRepository.existsByEmail(registerDto.getEmail())){
+        if (appUserRepository.existsByEmail(registerDto.getEmail())) {
             throw new AuthApiException(HttpStatus.BAD_REQUEST, "Email already exists!");
         }
 
@@ -107,27 +110,32 @@ public class AuthServiceImpl implements AuthService {
         return "User registered successfully!";
     }
 
-    public String updateInfo(long id, UpdateUserInfoDto updateUserInfoDto){
+    @Override
+    public Device registerDevice(Device device) {
+        return deviceRepository.save(device);
+    }
+
+    public String updateInfo(long id, UpdateUserInfoDto updateUserInfoDto) {
         Optional<AppUser> appUser = appUserRepository.findById(id);
 
-        if (appUser.isPresent()){
+        if (appUser.isPresent()) {
             // if (registerDto.getAverageBandwidth() != null)
             System.out.println(updateUserInfoDto.getAverageBandwidth());
-            if (updateUserInfoDto.getAverageBandwidth() != null){
+            if (updateUserInfoDto.getAverageBandwidth() != null) {
                 appUser.get().setAverageBandwidth(updateUserInfoDto.getAverageBandwidth());
             }
-            if (updateUserInfoDto.getAverageTimeOnline() != null){
+            if (updateUserInfoDto.getAverageTimeOnline() != null) {
                 appUser.get().setAverageTimeOnline(updateUserInfoDto.getAverageTimeOnline());
             }
-            if (updateUserInfoDto.getLastFourUrls() != null){
+            if (updateUserInfoDto.getLastFourUrls() != null) {
                 appUser.get().setLastFourUrls(updateUserInfoDto.getLastFourUrls());
             }
-            if (updateUserInfoDto.getTopFourUrls() != null){
+            if (updateUserInfoDto.getTopFourUrls() != null) {
                 appUser.get().setTopFourUrls(updateUserInfoDto.getTopFourUrls());
             }
             appUserRepository.save(appUser.get());
             return appUser.get().getFirstName();
-        }else{
+        } else {
             return "User not found with that id";
         }
     }
@@ -149,7 +157,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public AppUser findUserByPasswordResetToken(String token) {
-        return passwordResetTokenService.findAppUserByPasswordResetToken(token).get() ;
+        return passwordResetTokenService.findAppUserByPasswordResetToken(token).get();
     }
 
     @Override

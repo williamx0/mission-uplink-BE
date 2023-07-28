@@ -8,6 +8,8 @@ import com.missionuplink.admindashboard.payload.LoginDto;
 import com.missionuplink.admindashboard.payload.PasswordResetDto;
 import com.missionuplink.admindashboard.payload.RegisterDto;
 import com.missionuplink.admindashboard.payload.UpdateUserInfoDto;
+import com.missionuplink.admindashboard.model.entity.Device;
+
 import com.missionuplink.admindashboard.service.AuthService;
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.Optional;
@@ -91,6 +93,11 @@ public class AuthController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    @PostMapping(value={"/deviceRegister", "/deviceSignup"})
+    public ResponseEntity<Device> deviceRegister(@RequestBody Device device){
+        Device registeredDevice = authService.registerDevice(device);
+        return new ResponseEntity<>(registeredDevice, HttpStatus.CREATED);
+    }
     /**
      * This function is called when user clicks on the "forget password" button.
      * It generates the url that the reset password request will be sent to.

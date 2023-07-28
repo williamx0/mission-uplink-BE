@@ -64,7 +64,7 @@ public class DeviceController {
         return new ResponseEntity<>(device, HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public ResponseEntity<List<Device>> getAllDevices() {
         List<Device> devices = deviceService.getAllDevices();
         return new ResponseEntity<>(devices, HttpStatus.OK);
