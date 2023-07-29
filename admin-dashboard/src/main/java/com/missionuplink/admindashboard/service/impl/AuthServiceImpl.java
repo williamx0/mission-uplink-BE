@@ -22,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 import java.util.Optional;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,7 +40,7 @@ public class AuthServiceImpl implements AuthService {
 
     private AuthenticationManager authenticationManager;
     private AppUserRepository appUserRepository;
-    private DeviceRepository deviceRepository;
+    // private DeviceRepository deviceRepository;
     private PasswordEncoder passwordEncoder;
     private JwtTokenProvider jwtTokenProvider;
     private final PasswordResetTokenService passwordResetTokenService;
@@ -57,7 +58,6 @@ public class AuthServiceImpl implements AuthService {
         this.passwordEncoder = passwordEncoder;
         this.jwtTokenProvider = jwtTokenProvider;
         this.passwordResetTokenService = passwordResetTokenService;
-        this.deviceRepository = deviceRepository;
     }
 
     @Override
@@ -135,7 +135,7 @@ public class AuthServiceImpl implements AuthService {
         device2.setUid(device.getUid());
         device2.setSystemModel(device.getSystemModel());
         device2.setEnabled(true);
-        device2.setRegistrationDate(LocalDate.now());
+        device2.setRegistrationDate(LocalDateTime.now());
         return deviceRepository.save(device2);
     }
 
