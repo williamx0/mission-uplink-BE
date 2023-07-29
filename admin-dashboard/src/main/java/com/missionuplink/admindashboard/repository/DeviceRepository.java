@@ -13,4 +13,8 @@ public interface DeviceRepository extends JpaRepository<Device, Long> {
     List<Device> findAllByRegistrationDateBetween(
         LocalDate desiredDate,
         LocalDate currentDate);
+
+    Device findByMacAddress(String macAddress);
+
+    Boolean existsByMacAddress(String macAddress);
 }

@@ -2,6 +2,7 @@ package com.missionuplink.admindashboard.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -40,7 +41,7 @@ public class Device {
 
     @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private LocalDate registrationDate;
+    private LocalDateTime registrationDate;
 
     private Boolean enabled;
 

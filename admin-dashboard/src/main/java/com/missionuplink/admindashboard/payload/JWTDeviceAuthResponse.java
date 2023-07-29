@@ -1,16 +1,16 @@
 package com.missionuplink.admindashboard.payload;
 
+import com.missionuplink.admindashboard.model.enums.AppUserRole;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DeviceLoginDto {
-	private String username;
-    private String password;
-    private String macAddress;
+public class JWTDeviceAuthResponse {
+    private String accessToken;
+    private String tokenType = "Bearer";
 }

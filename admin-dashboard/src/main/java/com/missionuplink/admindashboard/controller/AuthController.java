@@ -5,6 +5,7 @@ import com.missionuplink.admindashboard.payload.DeviceDto;
 import com.missionuplink.admindashboard.payload.DeviceLoginDto;
 import com.missionuplink.admindashboard.payload.EmailDto;
 import com.missionuplink.admindashboard.payload.JWTAuthResponse;
+import com.missionuplink.admindashboard.payload.JWTDeviceAuthResponse;
 import com.missionuplink.admindashboard.payload.LoginDto;
 import com.missionuplink.admindashboard.payload.PasswordResetDto;
 import com.missionuplink.admindashboard.payload.RegisterDto;
@@ -76,13 +77,13 @@ public class AuthController {
     }
     
     @PostMapping(value = {"/deviceLogin", "/deviceSignin"})
-    public ResponseEntity<JWTAuthResponse> deviceLogin(@RequestBody DeviceLoginDto loginDto){
+    public ResponseEntity<JWTDeviceAuthResponse> deviceLogin(@RequestBody DeviceLoginDto loginDto){
         String tokenAndRole = authService.deviceLogin(loginDto);
 
-        JWTAuthResponse jwtAuthResponse = new JWTAuthResponse();
-        jwtAuthResponse.setAccessToken(tokenAndRole);
+        JWTDeviceAuthResponse jWTDeviceAuthResponse = new JWTDeviceAuthResponse();
+        jWTDeviceAuthResponse.setAccessToken(tokenAndRole);
 
-        return ResponseEntity.ok(jwtAuthResponse);
+        return ResponseEntity.ok(jWTDeviceAuthResponse);
     }
 
     // Register/Signup REST API
