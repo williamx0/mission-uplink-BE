@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.missionuplink.admindashboard.model.entity.AppUser;
+import com.missionuplink.admindashboard.payload.DeviceDto;
 import com.missionuplink.admindashboard.payload.DeviceLoginDto;
 import com.missionuplink.admindashboard.payload.LoginDto;
 import com.missionuplink.admindashboard.payload.RegisterDto;
@@ -20,7 +21,7 @@ public interface AuthService {
 
     String register(RegisterDto registerDto);
 
-    Device registerDevice(Device device);
+    Device registerDevice(DeviceDto device);
 
     List<AppUser> getAllWithDate(LocalDate fiveDaysAgo);
 

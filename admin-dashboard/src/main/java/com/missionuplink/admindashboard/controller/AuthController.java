@@ -1,6 +1,7 @@
 package com.missionuplink.admindashboard.controller;
 
 import com.missionuplink.admindashboard.model.entity.AppUser;
+import com.missionuplink.admindashboard.payload.DeviceDto;
 import com.missionuplink.admindashboard.payload.DeviceLoginDto;
 import com.missionuplink.admindashboard.payload.EmailDto;
 import com.missionuplink.admindashboard.payload.JWTAuthResponse;
@@ -94,7 +95,7 @@ public class AuthController {
     }
 
     @PostMapping(value={"/deviceRegister", "/deviceSignup"})
-    public ResponseEntity<Device> deviceRegister(@RequestBody Device device){
+    public ResponseEntity<Device> deviceRegister(@RequestBody DeviceDto device){
         Device registeredDevice = authService.registerDevice(device);
         return new ResponseEntity<>(registeredDevice, HttpStatus.CREATED);
     }

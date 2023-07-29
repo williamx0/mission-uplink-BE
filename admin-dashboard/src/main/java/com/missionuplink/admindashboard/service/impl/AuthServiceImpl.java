@@ -4,6 +4,7 @@ import com.missionuplink.admindashboard.exception.AuthApiException;
 import com.missionuplink.admindashboard.model.entity.AppUser;
 import com.missionuplink.admindashboard.model.entity.Device;
 import com.missionuplink.admindashboard.model.enums.AppUserRole;
+import com.missionuplink.admindashboard.payload.DeviceDto;
 import com.missionuplink.admindashboard.payload.DeviceLoginDto;
 import com.missionuplink.admindashboard.payload.LoginDto;
 import com.missionuplink.admindashboard.payload.RegisterDto;
@@ -111,8 +112,17 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public Device registerDevice(Device device) {
-        return deviceRepository.save(device);
+    public Device registerDevice(DeviceDto device) {
+        Device device2 = new Device();
+        device2.setMacAddress(device.getMacAddress());
+        device2.setDeviceName(device.getDeviceName());
+        device2.setDeviceType(device.getDeviceType());
+        device2.setHardwareId(device.getHardwareId());
+        device2.setUid(device.getUid());
+        device2.setSystemModel(device.getSystemModel());
+        device2.setEnabled(true);
+        device2.setRegistrationDate(LocalDate.now());
+        return deviceRepository.save(device2);
     }
 
     public String updateInfo(long id, UpdateUserInfoDto updateUserInfoDto) {
