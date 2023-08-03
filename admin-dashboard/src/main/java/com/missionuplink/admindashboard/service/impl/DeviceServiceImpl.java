@@ -5,12 +5,18 @@ import com.missionuplink.admindashboard.exception.ResourceNotFoundException;
 import com.missionuplink.admindashboard.model.entity.AppUser;
 import com.missionuplink.admindashboard.model.entity.Device;
 import com.missionuplink.admindashboard.payload.DeviceDto;
+import com.missionuplink.admindashboard.payload.DeviceResponse;
+import com.missionuplink.admindashboard.payload.DeviceStatusDto;
 import com.missionuplink.admindashboard.repository.DeviceRepository;
 import com.missionuplink.admindashboard.service.DeviceService;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import lombok.AllArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
@@ -35,22 +41,34 @@ public class DeviceServiceImpl implements DeviceService {
 //        public Device registerDevice(Device device) {
 //            return deviceRepository.save(device);
 //        }
-        public String registerDevice(DeviceDto deviceDto) {
-            if (deviceRepository.existsByMacAddress(deviceDto.getMacAddress())) return "Device already exists.";
+        public DeviceStatusDto registerDevice(DeviceDto deviceDto) {
+            if (deviceRepository.existsByMacAddress(deviceDto.getMacAddress())){
+                throw new AdminException(HttpStatus.BAD_REQUEST, "Device with Mac Address of " + deviceDto.getMacAddress() + " has already existed.");
+            };
             Device device = new Device();
+
             device.setMacAddress(deviceDto.getMacAddress());
             device.setDeviceName(deviceDto.getDeviceName());
             device.setHardwareId(deviceDto.getHardwareId());
             device.setDeviceType(deviceDto.getDeviceType());
-            device.setSystemModel(deviceDto.getSystemModel());
-            device.setUid(deviceDto.getUid());
+            device.setIpAddress(deviceDto.getIpAddress());
+            device.setAssignedLab(deviceDto.getAssignedLab());
+
             device.setEnabled(true);
+            device.setOnline(true);
+
             LocalDateTime currentTime = LocalDateTime.now();
             String currentTimeString = currentTime.format(localDateFormatter);
             currentTime = LocalDateTime.parse(currentTimeString, localDateFormatter);
             device.setRegistrationDate(currentTime);
             deviceRepository.save(device);
-            return "Device registered successfully.";
+
+            Device createdDevice = deviceRepository.findByMacAddress(deviceDto.getMacAddress());
+            DeviceStatusDto deviceStatusDto = new DeviceStatusDto();
+            deviceStatusDto.setId(createdDevice.getId());
+            deviceStatusDto.setOnline(createdDevice.getOnline());
+            deviceStatusDto.setEnabled(createdDevice.getEnabled());
+            return deviceStatusDto;
         }
 
         @Override
@@ -94,8 +112,21 @@ public class DeviceServiceImpl implements DeviceService {
         }
 
         @Override
-        public List<Device> getAllDevices() {
-            return deviceRepository.findAll();
+        public DeviceResponse getAllDevices(int pageNo, int pageSize) {
+
+            Pageable pageable = PageRequest.of(pageNo, pageSize);
+            Page<Device> devices = deviceRepository.findAll(pageable);
+
+            //get content from page object
+            List<Device> content = devices.getContent();
+            DeviceResponse deviceResponse = new DeviceResponse();
+            deviceResponse.setContent(content);
+            deviceResponse.setPageNo(devices.getNumber());
+            deviceResponse.setPageSize(devices.getSize());
+            deviceResponse.setTotalDevices(devices.getTotalElements());
+            deviceResponse.setTotalPages(devices.getTotalPages());
+            deviceResponse.setLastPage(devices.isLast());
+            return deviceResponse;
         }
 
         @Override
@@ -136,6 +167,33 @@ public class DeviceServiceImpl implements DeviceService {
         }
 
         @Override
+        public DeviceStatusDto updateDeviceStatus(DeviceStatusDto deviceStatusDto) {
+            Device device = deviceRepository.findById(deviceStatusDto.getId()).orElseThrow(
+                    () -> new ResourceNotFoundException("Device", "id", deviceStatusDto.getId())
+            );
+
+            device.setOnline(deviceStatusDto.isOnline());
+            device.setEnabled(deviceStatusDto.isEnabled());
+            deviceRepository.save(device);
+
+
+            DeviceStatusDto updatedDeviceStatusDto = new DeviceStatusDto();
+            updatedDeviceStatusDto.setId(device.getId());
+            updatedDeviceStatusDto.setOnline(device.getOnline());
+            updatedDeviceStatusDto.setEnabled(device.getEnabled());
+            return  updatedDeviceStatusDto;
+        }
+
+        @Override
+        public void deleteById(Long id) {
+            Device device = deviceRepository.findById(id).orElseThrow(
+                    () -> new ResourceNotFoundException("Device", "id", id)
+            );
+
+            deviceRepository.deleteById(id);
+        }
+
+    @Override
         public List<Device> getNewDevicesBetweenDays(LocalDate desiredDate, LocalDate currentDate) {
 
             return deviceRepository.findAllByRegistrationDateBetween(desiredDate,currentDate);

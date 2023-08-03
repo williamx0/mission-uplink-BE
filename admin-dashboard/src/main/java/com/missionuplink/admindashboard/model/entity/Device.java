@@ -24,6 +24,12 @@ public class Device {
     @Column(name = "macAddress", nullable = false, unique = true)
     private String macAddress;
 
+    @Column(name = "assignedLab", nullable = false)
+    private String assignedLab;
+
+    @Column(name = "ipAddress", nullable = false)
+    private String ipAddress;
+
     @Column(name = "deviceName", nullable = false)
     private String deviceName;
 
@@ -33,10 +39,9 @@ public class Device {
     @Column(name = "deviceType", nullable = false)
     private String deviceType;
 
-    @Column(name = "systemModel", nullable = false)
+    @Column(name = "systemModel")
     private String systemModel;
 
-    @Column(nullable = false)
     private String uid;
 
     @Column(nullable = false)
@@ -44,6 +49,8 @@ public class Device {
     private LocalDateTime registrationDate;
 
     private Boolean enabled;
+
+    private Boolean online;
 
     @JsonIgnore
     @ManyToMany
