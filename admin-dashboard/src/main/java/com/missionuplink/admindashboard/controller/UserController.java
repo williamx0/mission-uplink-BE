@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.missionuplink.admindashboard.model.entity.AppUser;
+import com.missionuplink.admindashboard.model.entity.Device;
 
 @RestController
 @RequestMapping("/api/user")
@@ -46,6 +47,7 @@ public class UserController {
         String response = userService.updateInfo(id, updateUserInfoDtoDto);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
+   
     // // Login/Signin REST API
     // // url: "/api/auth/login" or "/api/auth/signin"
     // @PostMapping(value = {"/login", "/signin"})

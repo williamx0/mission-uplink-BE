@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.missionuplink.admindashboard.exception.AuthApiException;
 import com.missionuplink.admindashboard.model.entity.AppUser;
+import com.missionuplink.admindashboard.model.entity.Device;
 import com.missionuplink.admindashboard.payload.LoginDto;
 import com.missionuplink.admindashboard.payload.RegisterDto;
 import com.missionuplink.admindashboard.payload.UpdateUserInfoDto;
@@ -64,5 +65,10 @@ public class UserServiceImpl implements UserService{
         }else{
             return "User not found with that id";
         }
+    }
+    @Override
+    public List<AppUser> getNewUserBetweenDays(LocalDate desiredDate, LocalDate currentDate) {
+
+        return appUserRepository.findAllBycreationDateBetween(desiredDate,currentDate);
     }
 }
