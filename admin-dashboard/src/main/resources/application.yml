@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres?useSSL=false
-    username: postgres
-    password: 231001
+    username: 
+    password: 
 
   jpa:
     hibernate:
@@ -13,8 +13,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: yz2568@cornell.edu
-    password: usnndzxhowxacxrx
+    username: 
+    password: 
     properties:
       mail:
         smtp:
