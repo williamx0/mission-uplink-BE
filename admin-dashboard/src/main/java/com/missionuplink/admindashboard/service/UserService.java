@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.missionuplink.admindashboard.model.entity.AppUser;
+import com.missionuplink.admindashboard.model.entity.Device;
 import com.missionuplink.admindashboard.payload.UpdateUserInfoDto;
 
 public interface UserService {
@@ -15,4 +16,6 @@ public interface UserService {
     String updateInfo(long id, UpdateUserInfoDto updateUserInfoDto);
 
     AddUserResponse add(AddUserDto addUserDto);
+
+    List<AppUser> getNewUserBetweenDays(LocalDate desiredDate, LocalDate currentDate);
 }

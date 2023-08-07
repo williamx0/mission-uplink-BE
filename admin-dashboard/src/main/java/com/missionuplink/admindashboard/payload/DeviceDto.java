@@ -11,9 +11,11 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DeviceDto {
     private String macAddress;
+    private String ipAddress;
+    private String deviceType;
     private String deviceName;
     private String hardwareId;
-    private String deviceType;
-    private String systemModel;
+    private String assignedLab;
+    private String SystemModel;
     private String uid;
 }

@@ -4,6 +4,8 @@ import com.missionuplink.admindashboard.exception.ResourceNotFoundException;
 import com.missionuplink.admindashboard.model.entity.AppUser;
 import com.missionuplink.admindashboard.model.entity.Device;
 import com.missionuplink.admindashboard.payload.DeviceDto;
+import com.missionuplink.admindashboard.payload.DeviceResponse;
+import com.missionuplink.admindashboard.payload.DeviceStatusDto;
 import com.missionuplink.admindashboard.repository.AppUserRepository;
 import com.missionuplink.admindashboard.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +31,17 @@ public class DeviceController {
     }
 
     //add new device
-    @PostMapping("/device")
-    public ResponseEntity<String> registerDevice(@RequestBody DeviceDto deviceDto) {
-        String response = deviceService.registerDevice(deviceDto);
+    @PostMapping("/devices/add")
+    public ResponseEntity<DeviceStatusDto> registerDevice(@RequestBody DeviceDto deviceDto) {
+        DeviceStatusDto response = deviceService.registerDevice(deviceDto);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    //get device status
+    @PutMapping("/devices/updateStatus")
+    public ResponseEntity<DeviceStatusDto> updateDeviceStatus(@RequestBody DeviceStatusDto deviceStatusDto){
+        DeviceStatusDto response = deviceService.updateDeviceStatus(deviceStatusDto);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     //update info for device with deviceid
@@ -65,9 +74,12 @@ public class DeviceController {
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Device>> getAllDevices() {
-        List<Device> devices = deviceService.getAllDevices();
-        return new ResponseEntity<>(devices, HttpStatus.OK);
+    public ResponseEntity<DeviceResponse> getAllDevices(
+            @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = "8", required = false) int pageSize
+    ) {
+        DeviceResponse deviceResponse = deviceService.getAllDevices(pageNo, pageSize);
+        return new ResponseEntity<>(deviceResponse, HttpStatus.OK);
     }
         
     @GetMapping("/newDevice")
@@ -107,6 +119,12 @@ public class DeviceController {
 
         String result = deviceService.addUser(deviceId, newUser);
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/devices/delete/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable(value = "id") Long id){
+        deviceService.deleteById(id);
+        return new ResponseEntity<>("Device deleted successfully", HttpStatus.OK);
     }
 
 

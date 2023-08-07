@@ -32,7 +32,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import scala.App;
+
 
 @Service
 @RequiredArgsConstructor
@@ -70,8 +70,9 @@ public class AuthServiceImpl implements AuthService {
 
         String token = jwtTokenProvider.generateToken(authentication);
         AppUserRole appUserRole = appUserRepository.findByEmail(loginDto.getEmail()).get().getAppUserRole();
+        Long appUserID = appUserRepository.findByEmail(loginDto.getEmail()).get().getId();        
         // return "User Logged-in successful!";
-        return new String[] { token, appUserRole.toString() };
+        return new String[] { token, appUserRole.toString(), appUserID.toString()};
     }
 
     // implement this, should be similar to login function but we dont need to

@@ -29,4 +29,8 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long> {
 
     @Query("select a from AppUser a WHERE a.creationDate >= ?1")
     List<AppUser>findAllWithDate(LocalDate fiveDaysAgo);
+    
+    List<AppUser> findAllBycreationDateBetween(
+            LocalDate desiredDate,
+            LocalDate currentDate);
 }

@@ -4,73 +4,88 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a33d1bbf-378c-43cd-a953-713565fe90da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_javafaker_javafaker_1_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_mifmif_generex_1_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__dk_brics_automaton_automaton_1_11_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_12_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_android_1_23.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/SampleDataLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/model/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/payload/AddUserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/payload/AddUserResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/admin-dashboard.iml" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/admin-dashboard.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/AdminDashboardApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/AdminDashboardApplication.java" afterDir="false" />
+    <list default="true" id="a33d1bbf-378c-43cd-a953-713565fe90da" name="Changes" comment="add user &amp; get user pagination">
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/HELP.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/admin-dashboard.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/AdminDashboardApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/controller/DeviceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/controller/EmailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/exception/AdminException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/exception/AuthApiException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/exception/MacAddressNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/exception/ResourceNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/model/entity/AppUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/model/entity/Device.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/model/entity/PasswordResetToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/model/enums/AppUserRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/model/enums/AppUserStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/payload/DeviceDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/payload/DeviceLoginDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/payload/EmailDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/payload/ErrorDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/payload/JWTAuthResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/payload/JWTDeviceAuthResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/payload/LoginDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/payload/ModifyUserStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/payload/PasswordResetDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/payload/RegisterDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/payload/UpdateUserInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/repository/AppUserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/repository/DeviceRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/repository/PasswordResetTokenRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/security/CustomAppUserDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/security/DeviceLoginAuthenticationProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/security/DeviceLoginToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/security/JwtAuthenticationEntryPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/security/JwtAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/security/JwtTokenProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/security/MacAddressAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/service/AuthService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/service/DeviceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/service/EmailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/service/PasswordResetTokenService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/service/impl/AuthServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/service/impl/DeviceServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/service/impl/EmailServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/service/impl/PasswordResetTokenServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/testTools/JwtAuthenticationTestAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/java/com/missionuplink/admindashboard/utils/PasswordGeneratorEncoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/main/resources/graphql/schema.graphqls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard 2/src/test/java/com/missionuplink/admindashboard/AdminDashboardApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/payload/DeviceResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/payload/DeviceStatusDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard/target/surefire-reports/TEST-com.missionuplink.admindashboard.AdminDashboardApplicationTests.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin-dashboard/target/surefire-reports/com.missionuplink.admindashboard.AdminDashboardApplicationTests.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/controller/DeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/controller/DeviceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/model/entity/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/model/entity/AppUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/model/entity/Device.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/model/entity/Device.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/payload/DeviceDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/payload/DeviceDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/repository/AppUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/repository/AppUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/service/DeviceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/service/DeviceService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/service/impl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/service/impl/AuthServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/service/impl/DeviceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/service/impl/DeviceServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/src/main/java/com/missionuplink/admindashboard/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin-dashboard/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/AdminDashboardApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/AdminDashboardApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/config/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/controller/AuthController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/controller/DeviceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/controller/DeviceController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/controller/EmailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/controller/EmailController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/exception/AdminException.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/exception/AdminException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/exception/AuthApiException.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/exception/AuthApiException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/exception/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/exception/GlobalExceptionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/exception/MacAddressNotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/exception/MacAddressNotFoundException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/exception/ResourceNotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/exception/ResourceNotFoundException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/model/entity/AppUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/model/entity/AppUser.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/model/entity/Device.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/model/entity/Device.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/model/entity/PasswordResetToken.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/model/entity/PasswordResetToken.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/model/enums/AppUserRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/model/enums/AppUserRole.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/DeviceDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/DeviceDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/DeviceLoginDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/DeviceLoginDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/EmailDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/EmailDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/ErrorDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/ErrorDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/JWTAuthResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/JWTAuthResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/JWTDeviceAuthResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/JWTDeviceAuthResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/LoginDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/LoginDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/PasswordResetDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/PasswordResetDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/RegisterDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/RegisterDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/UpdateUserInfoDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/payload/UpdateUserInfoDto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/repository/AppUserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/repository/AppUserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/repository/DeviceRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/repository/DeviceRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/repository/PasswordResetTokenRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/repository/PasswordResetTokenRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/security/CustomAppUserDetailsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/security/CustomAppUserDetailsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/security/DeviceLoginToken.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/security/DeviceLoginToken.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/security/JwtAuthenticationEntryPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/security/JwtAuthenticationEntryPoint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/security/JwtAuthenticationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/security/JwtAuthenticationFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/security/JwtTokenProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/security/JwtTokenProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/AuthService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/DeviceService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/DeviceService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/EmailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/EmailService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/PasswordResetTokenService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/PasswordResetTokenService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/UserService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/impl/AuthServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/impl/AuthServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/impl/DeviceServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/impl/DeviceServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/impl/EmailServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/impl/EmailServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/impl/PasswordResetTokenServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/impl/PasswordResetTokenServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/testTools/JwtAuthenticationTestAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/testTools/JwtAuthenticationTestAPI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/utils/PasswordGeneratorEncoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard/target/classes/com/missionuplink/admindashboard/utils/PasswordGeneratorEncoder.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +127,8 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "/Users/raymond/Desktop/TFG Summer Intern/mission-uplink-BE(7) copy 4"
   }
 }]]></component>
   <component name="RunManager">
@@ -135,6 +151,14 @@
       <option name="presentableId" value="Default" />
       <updated>1691093354201</updated>
     </task>
+    <task id="LOCAL-00001" summary="add user &amp; get user pagination">
+      <created>1691443770351</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1691443770351</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,5 +171,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add user &amp; get user pagination" />
+    <option name="LAST_COMMIT_MESSAGE" value="add user &amp; get user pagination" />
   </component>
 </project>
