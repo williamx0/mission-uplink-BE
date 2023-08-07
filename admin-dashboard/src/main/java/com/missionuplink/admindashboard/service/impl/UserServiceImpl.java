@@ -1,11 +1,16 @@
 package com.missionuplink.admindashboard.service.impl;
 
+import com.missionuplink.admindashboard.model.entity.User;
+import com.missionuplink.admindashboard.payload.AddUserDto;
+import com.missionuplink.admindashboard.payload.AddUserResponse;
+import com.missionuplink.admindashboard.repository.UserRepository;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -26,14 +31,15 @@ import com.missionuplink.admindashboard.service.UserService;
 public class UserServiceImpl implements UserService{
 // private AuthenticationManager authenticationManager;
     private AppUserRepository appUserRepository;
+    private final UserRepository userRepository;
     // private PasswordEncoder passwordEncoder;
     // private JwtTokenProvider jwtTokenProvider;
 
 
     @Autowired
-    public UserServiceImpl(
-                           AppUserRepository appUserRepository) {
+    public UserServiceImpl(AppUserRepository appUserRepository, UserRepository userRepository) {
         this.appUserRepository = appUserRepository;
+        this.userRepository = userRepository;
     }
     public List<AppUser> getAllWithDate(LocalDate fiveDaysAgo) {
         return appUserRepository.findAllWithDate(fiveDaysAgo);
@@ -64,5 +70,24 @@ public class UserServiceImpl implements UserService{
         }else{
             return "User not found with that id";
         }
+    }
+
+    @Override
+    public AddUserResponse add(AddUserDto addUserDto) {
+        User user = new User();
+        user.setFirstName(addUserDto.getFirstName());
+        user.setLastName(addUserDto.getLastName());
+        user.setType(addUserDto.getType());
+        user.setAssignedLab(addUserDto.getAssignedLab());
+        user.setValidUntil(addUserDto.getValidUntil());
+        user.setStatus(addUserDto.getStatus());
+        user.setTemporary(addUserDto.isTemporary());
+        user.setCreationDate(LocalDate.now());
+        userRepository.save(user);
+
+        AddUserResponse response = new AddUserResponse();
+        response.setId(Math.toIntExact(user.getId()));
+        response.setStatus(user.getStatus());
+        return response;
     }
 }

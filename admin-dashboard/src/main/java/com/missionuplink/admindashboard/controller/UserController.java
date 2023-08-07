@@ -1,9 +1,14 @@
 package com.missionuplink.admindashboard.controller;
 
+import com.missionuplink.admindashboard.model.entity.User;
+import com.missionuplink.admindashboard.payload.AddUserDto;
+import com.missionuplink.admindashboard.payload.AddUserResponse;
 import com.missionuplink.admindashboard.payload.JWTAuthResponse;
 import com.missionuplink.admindashboard.payload.LoginDto;
 import com.missionuplink.admindashboard.payload.RegisterDto;
 import com.missionuplink.admindashboard.payload.UpdateUserInfoDto;
+import com.missionuplink.admindashboard.repository.AppUserRepository;
+import com.missionuplink.admindashboard.repository.UserRepository;
 import com.missionuplink.admindashboard.service.UserService;
 
 import java.time.LocalDate;
@@ -12,6 +17,8 @@ import java.util.List;
 import org.apache.catalina.users.SparseUserDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.core.Local;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +27,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.missionuplink.admindashboard.model.entity.AppUser;
 
@@ -29,9 +37,15 @@ public class UserController {
 
     private UserService userService;
 
+    private final AppUserRepository appUserRepository;
+
+    private final UserRepository userRepository;
+
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, AppUserRepository appUserRepository, UserRepository userRepository) {
         this.userService = userService;
+        this.appUserRepository = appUserRepository;
+        this.userRepository = userRepository;
     }
 
 
@@ -66,4 +80,16 @@ public class UserController {
     //     String response = authService.register(registerDto);
     //     return new ResponseEntity<>(response, HttpStatus.CREATED);
     // }
+
+    @GetMapping("/all")
+    public Page<AppUser> all(@RequestParam int page, @RequestParam int size) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+        return appUserRepository.findAll(pageRequest);
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<AddUserResponse> add(@RequestBody AddUserDto addUserDto) {
+        AddUserResponse response = userService.add(addUserDto);
+        return ResponseEntity.ok(response);
+    }
 }

@@ -12,24 +12,22 @@ import java.util.List;
 
 import org.springframework.boot.autoconfigure.web.WebProperties.Resources.Chain.Strategy;
 
-// import org.hibernate.mapping.List;
-
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Mission Uplink Teachers and Admins")
-public class AppUser {
+@Table(name = "Mission Uplink Users")
+public class User {
     @SequenceGenerator(
-            name = "user_sequence",
-            sequenceName = "user_sequence",
+            name = "student_sequence",
+            sequenceName = "student_sequence",
             allocationSize = 1
     )
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "user_sequence"
+            generator = "student_sequence"
     )
     private Long id;
 
@@ -39,41 +37,31 @@ public class AppUser {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false, unique = true)
-    private String email;
-
     @Column(nullable = false)
-    private String password;
-
-    private Boolean locked;
-
-    private Boolean enabled;
-
     private Boolean temporary;
 
+    @Column(nullable = false)
     private LocalDate creationDate;
 
-//     @Column(nullable = false)
-    private Long averageBandwidth;
-    
-//     @Column(nullable = false)
-    private Long averageTimeOnline;
-
+    @Column(nullable = false)
     private String assignedLab;
+
+    @Column(nullable = false)
+    private String status;
+
+    @Column(nullable = false)
+    private String type;
+
+    @Column(nullable = false)
+    private String validUntil;
 
     private Timestamp lastOnline;
 
-    private String status;
+    private Long averageBandwidth;
 
-    private String type;
-
-    private String validUntil;
+    private Long averageTimeOnline;
 
     private List<String> lastFourUrls;
 
     private List<String> topFourUrls;
-
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private AppUserRole appUserRole;
 }
