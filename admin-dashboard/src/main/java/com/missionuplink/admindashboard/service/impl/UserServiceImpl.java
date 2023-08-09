@@ -1,8 +1,9 @@
 package com.missionuplink.admindashboard.service.impl;
 
+import com.missionuplink.admindashboard.exception.ResourceNotFoundException;
 import com.missionuplink.admindashboard.model.entity.User;
-import com.missionuplink.admindashboard.payload.AddUserDto;
-import com.missionuplink.admindashboard.payload.AddUserResponse;
+import com.missionuplink.admindashboard.model.enums.AppUserStatus;
+import com.missionuplink.admindashboard.payload.*;
 import com.missionuplink.admindashboard.repository.UserRepository;
 import java.time.LocalDate;
 import java.util.List;
@@ -21,9 +22,6 @@ import org.springframework.stereotype.Service;
 import com.missionuplink.admindashboard.exception.AuthApiException;
 import com.missionuplink.admindashboard.model.entity.AppUser;
 import com.missionuplink.admindashboard.model.entity.Device;
-import com.missionuplink.admindashboard.payload.LoginDto;
-import com.missionuplink.admindashboard.payload.RegisterDto;
-import com.missionuplink.admindashboard.payload.UpdateUserInfoDto;
 import com.missionuplink.admindashboard.repository.AppUserRepository;
 import com.missionuplink.admindashboard.security.JwtTokenProvider;
 import com.missionuplink.admindashboard.service.UserService;
@@ -95,5 +93,34 @@ public class UserServiceImpl implements UserService{
     public List<AppUser> getNewUserBetweenDays(LocalDate desiredDate, LocalDate currentDate) {
 
         return appUserRepository.findAllBycreationDateBetween(desiredDate,currentDate);
+    }
+
+    @Override
+    public String modifyStatus(long id, AppUserStatusDto appUserStatusDto){
+        AppUser appUser = appUserRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("AppUser", "id", id)
+        );
+
+        appUser.setEnabled(appUserStatusDto.isEnabled());
+        appUser.setOnline(appUserStatusDto.isOnline());
+
+        appUserRepository.save(appUser);
+        
+
+
+
+        return "Status modified successfully";
+
+//        if (appUser.isPresent()) {
+//            if (!appUser.get().getAppUserStatus().equals(appUserStatus)) {
+//                appUser.get().setAppUserStatus(appUserStatus);
+//                appUserRepository.save(appUser.get());
+//                return "Status modified successfully";
+//            }
+//            return "Status remains the same";
+//
+//        }else{
+//            return "User not found with that id";
+//        }
     }
 }

@@ -1,6 +1,7 @@
 package com.missionuplink.admindashboard.model.entity;
 
 import com.missionuplink.admindashboard.model.enums.AppUserRole;
+import com.missionuplink.admindashboard.model.enums.AppUserStatus;
 import jakarta.persistence.*;
 import java.sql.Timestamp;
 import lombok.AllArgsConstructor;
@@ -51,6 +52,8 @@ public class AppUser {
 
     private Boolean temporary;
 
+    private Boolean online;
+
     private LocalDate creationDate;
 
 //     @Column(nullable = false)
@@ -72,6 +75,10 @@ public class AppUser {
     private List<String> lastFourUrls;
 
     private List<String> topFourUrls;
+
+//    @Column(nullable = false)
+//    @Enumerated(EnumType.STRING)
+//    private AppUserStatus appUserStatus;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)

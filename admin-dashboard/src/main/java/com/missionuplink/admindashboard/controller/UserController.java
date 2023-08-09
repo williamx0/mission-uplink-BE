@@ -1,12 +1,8 @@
 package com.missionuplink.admindashboard.controller;
 
 import com.missionuplink.admindashboard.model.entity.User;
-import com.missionuplink.admindashboard.payload.AddUserDto;
-import com.missionuplink.admindashboard.payload.AddUserResponse;
-import com.missionuplink.admindashboard.payload.JWTAuthResponse;
-import com.missionuplink.admindashboard.payload.LoginDto;
-import com.missionuplink.admindashboard.payload.RegisterDto;
-import com.missionuplink.admindashboard.payload.UpdateUserInfoDto;
+import com.missionuplink.admindashboard.model.enums.AppUserStatus;
+import com.missionuplink.admindashboard.payload.*;
 import com.missionuplink.admindashboard.repository.AppUserRepository;
 import com.missionuplink.admindashboard.repository.UserRepository;
 import com.missionuplink.admindashboard.service.UserService;
@@ -82,6 +78,12 @@ public class UserController {
     //     String response = authService.register(registerDto);
     //     return new ResponseEntity<>(response, HttpStatus.CREATED);
     // }
+
+    @PutMapping("{id}/modifystatus")
+    public ResponseEntity<String> modifyStatus(@PathVariable long id, @RequestBody AppUserStatusDto appUserStatusDto){
+        String response = userService.modifyStatus(id, appUserStatusDto);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
 
     @GetMapping("/all")
     public Page<AppUser> all(@RequestParam int page, @RequestParam int size) {
