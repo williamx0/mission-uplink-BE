@@ -1,7 +1,5 @@
 package com.missionuplink.admindashboard.controller;
 
-import com.missionuplink.admindashboard.model.entity.User;
-import com.missionuplink.admindashboard.model.enums.AppUserStatus;
 import com.missionuplink.admindashboard.payload.*;
 import com.missionuplink.admindashboard.repository.AppUserRepository;
 import com.missionuplink.admindashboard.repository.UserRepository;
@@ -10,9 +8,7 @@ import com.missionuplink.admindashboard.service.UserService;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.apache.catalina.users.SparseUserDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -26,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.missionuplink.admindashboard.model.entity.AppUser;
-import com.missionuplink.admindashboard.model.entity.Device;
 
 @RestController
 @RequestMapping("/api/user")

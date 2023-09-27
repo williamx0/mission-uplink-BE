@@ -1,6 +1,5 @@
 package com.missionuplink.admindashboard.payload;
 
-import com.missionuplink.admindashboard.model.enums.AppUserRole;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

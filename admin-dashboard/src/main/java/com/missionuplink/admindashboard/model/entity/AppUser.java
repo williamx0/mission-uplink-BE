@@ -1,7 +1,6 @@
 package com.missionuplink.admindashboard.model.entity;
 
 import com.missionuplink.admindashboard.model.enums.AppUserRole;
-import com.missionuplink.admindashboard.model.enums.AppUserStatus;
 import jakarta.persistence.*;
 import java.sql.Timestamp;
 import lombok.AllArgsConstructor;
@@ -10,8 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.time.LocalDate;
 import java.util.List;
-
-import org.springframework.boot.autoconfigure.web.WebProperties.Resources.Chain.Strategy;
 
 // import org.hibernate.mapping.List;
 
