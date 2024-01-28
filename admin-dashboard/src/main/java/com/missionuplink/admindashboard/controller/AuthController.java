@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
@@ -56,7 +57,7 @@ public class AuthController {
         return authService.getAllWithDate(fiveDaysAgo);
     }
 
-    @PutMapping("{id}/updateinfo")
+   @PutMapping("{id}/updateinfo")
     public ResponseEntity<String> updateInfo(@PathVariable long id, @RequestBody UpdateUserInfoDto updateUserInfoDtoDto){
         String response = authService.updateInfo(id, updateUserInfoDtoDto);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
@@ -85,6 +86,7 @@ public class AuthController {
         return ResponseEntity.ok(jWTDeviceAuthResponse);
     }
 
+
     // Register/Signup REST API
     // url: "/api/auth/register" or "/api/auth/signup"
     // currently specify the appUserRole field as "USER" or "ADMIN"
@@ -99,6 +101,8 @@ public class AuthController {
         Device registeredDevice = authService.registerDevice(device);
         return new ResponseEntity<>(registeredDevice, HttpStatus.CREATED);
     }
+
+
     /**
      * This function is called when user clicks on the "forget password" button.
      * It generates the url that the reset password request will be sent to.
@@ -121,6 +125,7 @@ public class AuthController {
         }
         return passwordResetURL;
     }
+    
 
     /**
      * Helper function that sends the email for the function above

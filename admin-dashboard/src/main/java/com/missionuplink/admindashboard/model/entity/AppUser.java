@@ -53,10 +53,9 @@ public class AppUser {
 
     private LocalDate creationDate;
 
-//     @Column(nullable = false)
+//  @Column(nullable = false)
     private Long averageBandwidth;
     
-//     @Column(nullable = false)
     private Long averageTimeOnline;
 
     private String assignedLab;
