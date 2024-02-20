@@ -125,7 +125,7 @@ public class AuthController {
         }
         return passwordResetURL;
     }
-    
+
 
     /**
      * Helper function that sends the email for the function above
